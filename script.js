@@ -4,10 +4,10 @@ const products=[
  {title:'오만과 편견',type:'모카번',flavor:'우유크림맛',price:'3,700원',drink:'라떼',quote:'첫인상은 달콤하고, 마지막은 생각보다 오래 남습니다.',color:'mocha',image:'https://blog.kakaocdn.net/dna/bcdGAs/dJMcabMeU4u/AAAAAAAAAAAAAAAAAAAAADcIb9_tCboWpu6YgynfLWiyekemtis9aQ7HkX_MbMPn/img.jpg?allow_ip=&allow_referer=&credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1788188399&signature=Mcilu9mWQyZv2%2Bv0W%2BH2x4od9g%3D'},
  {title:'나쁜 소년이 서 있다',type:'깨찰빵',flavor:'커스터드맛',price:'2,700원',drink:'콜드브루',quote:'조금 삐딱한 오후에도, 부드러운 크림은 필요하니까.',color:'',image:'https://blog.kakaocdn.net/dna/dnOLzI/dJMcagmkiWU/AAAAAAAAAAAAAAAAAAAAAGe9WEKt5Uh7szjgfm4STZbTNZaNeBhJd4qvYX0CtHdC/img.jpg?allow_ip=&allow_referer=&credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1788188399&signature=iQynTLJYpG6gxAvZj7iyTwIJ8L8%3D'}
 ];
-products[0].image='public/bread-custard-mocha.png';
-products[1].image='public/bread-solti-milk.png';
-products[2].image='public/bread-milk-mocha.png';
-products[3].image='public/bread-custard-chechal.png';
+products[0].image='bread-custard-mocha.png';
+products[1].image='bread-solti-milk.png';
+products[2].image='bread-milk-mocha.png';
+products[3].image='bread-custard-chechal.png';
 const grid=document.querySelector('#product-grid'),panel=document.querySelector('#detail-panel'),quote=document.querySelector('#detail-quote'),meta=document.querySelector('#detail-meta');
 products.forEach((product,i)=>{const card=document.createElement('article');card.className='product-card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`${product.title} 상세 보기`);card.innerHTML=`<div class="product-visual"><span class="product-index">0${i+1}</span><img class="product-photo" src="${product.image}" alt="${product.title} ${product.type} ${product.flavor} 제품 사진" loading="lazy" /><div class="photo-credit">GS25 / MINUMSA</div></div><div><div class="product-type">${product.type} / ${product.flavor}</div><h3>${product.title}</h3><div class="product-flavor">추천 음료 · ${product.drink}</div></div><div class="product-price">${product.price}</div>`;const select=()=>{document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');quote.textContent=`“${product.quote}”`;meta.textContent=`${product.title}  ·  ${product.type} ${product.flavor}  ·  ${product.price}  ·  ${product.drink}와 함께`;panel.scrollIntoView({behavior:'smooth',block:'nearest'});};card.addEventListener('click',select);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}});grid.appendChild(card)});
 document.querySelector('#close-detail').addEventListener('click',()=>{document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('active'));quote.textContent='제품 카드를 선택하면 오늘의 문장이 나타납니다.';meta.textContent=''});
@@ -27,7 +27,7 @@ if(window.L&&mapEl){map=L.map(mapEl,{zoomControl:false}).setView([37.576,126.979
 renderStores();
 searchInput?.addEventListener('input',e=>renderStores(e.target.value.trim()));
 document.querySelector('#locate-me')?.addEventListener('click',()=>{if(!navigator.geolocation){alert('이 브라우저에서는 위치 기능을 사용할 수 없습니다.');return}navigator.geolocation.getCurrentPosition(pos=>{if(map)map.setView([pos.coords.latitude,pos.coords.longitude],14)},()=>alert('현재 위치를 확인할 수 없습니다. 브라우저 위치 권한을 허용해 주세요.'))});
-const conceptImage='public/bookmark-concept.png';
+const conceptImage='bookmark-concept.png';
 const heroImage=document.querySelector('.hero-art img');
 if(heroImage){heroImage.src=conceptImage;heroImage.alt='민음사 문학빵과 랜덤 책갈피 컨셉 이미지'}
 const bookmarkVisual=document.querySelector('.bookmark-visual');
