@@ -1,8 +1,8 @@
 const products = [
-  { title: '사랑의 단상', type: '모카번', flavor: '커스터드 모카', price: '3,700원', drink: '아메리카노', quote: '사랑은 설명하는 것이 아니라, 한 번 더 곁눈질해 보는 것.', image: 'bread-custard-mocha.png' },
-  { title: '어린 왕자처럼 다정하게', type: '꿀소금빵', flavor: '바닐라솔티', price: '2,700원', drink: '차가운 우유', quote: '중요한 것은 눈에 보이지 않아. 그래서 더 오래 바라보게 돼.', image: 'bread-solti-milk.png' },
-  { title: '오만과 편견', type: '모카번', flavor: '우유크림 모카', price: '3,700원', drink: '라떼', quote: '첫인상은 스쳐가고, 마음은 마침내 오래 머뭅니다.', image: 'bread-milk-mocha.png' },
-  { title: '참을 수 없는 존재의 가벼움', type: '꿀소금빵', flavor: '커스터드 모카', price: '2,700원', drink: '콜드브루', quote: '조금 무거운 오후에도, 부드러운 한 입은 필요하니까.', image: 'bread-custard-chechal.png' }
+  { title: '사랑의 단상', type: '모카번', flavor: '커스터드 모카', price: '3,700원', drink: '아메리카노', quote: '사랑은 설명하는 것이 아니라, 한 번 더 곁눈질해 보는 것.', image: 'assets/images/bread-custard-mocha.png' },
+  { title: '어린 왕자처럼 다정하게', type: '꿀소금빵', flavor: '바닐라솔티', price: '2,700원', drink: '차가운 우유', quote: '중요한 것은 눈에 보이지 않아. 그래서 더 오래 바라보게 돼.', image: 'assets/images/bread-solti-milk.png' },
+  { title: '오만과 편견', type: '모카번', flavor: '우유크림 모카', price: '3,700원', drink: '라떼', quote: '첫인상은 스쳐가고, 마음은 마침내 오래 머뭅니다.', image: 'assets/images/bread-milk-mocha.png' },
+  { title: '참을 수 없는 존재의 가벼움', type: '꿀소금빵', flavor: '커스터드 모카', price: '2,700원', drink: '콜드브루', quote: '조금 무거운 오후에도, 부드러운 한 입은 필요하니까.', image: 'assets/images/bread-custard-chechal.png' }
 ];
 
 const grid = document.querySelector('#product-grid');
@@ -43,6 +43,6 @@ if (window.L && mapEl) { map = L.map(mapEl, { zoomControl: false }).setView([37.
 renderStores();
 searchInput?.addEventListener('input', e => renderStores(e.target.value.trim()));
 document.querySelector('#locate-me')?.addEventListener('click', () => { if (!navigator.geolocation) { alert('이 브라우저에서는 위치 기능을 사용할 수 없습니다.'); return; } navigator.geolocation.getCurrentPosition(pos => map?.setView([pos.coords.latitude, pos.coords.longitude], 14), () => alert('현재 위치를 확인할 수 없습니다. 브라우저 위치 권한을 허용해 주세요.')); });
-const conceptImage = 'bookmark-concept.png';
+const conceptImage = 'assets/images/bookmark-concept.png';
 const heroImage = document.querySelector('.hero-art img');
 if (heroImage) { heroImage.src = conceptImage; heroImage.alt = '민음사 문학빵과 랜덤 책갈피 컨셉 이미지'; }
