@@ -27,3 +27,8 @@
 @media(max-width:800px){.site-header{height:52px}.hero{padding-top:27px}.hero-art{margin-top:25px}.hero-art img{height:150px}.intro-band{padding:23px 0}.intro-grid{gap:18px}.collection{padding-top:30px;padding-bottom:25px}.section-heading{margin-bottom:15px}.product-card{min-height:195px}.product-visual{height:84px}.detail-panel{margin-top:15px}.bookmark-section{padding:25px 0}.bookmark-visual{height:150px;margin-bottom:-50px}.find-section{padding-top:28px}.map-layout{height:auto}.map-layout #store-map{height:220px;min-height:220px}.store-panel{max-height:245px}.store-item{grid-template-columns:24px 1fr 12px}.store-info strong{font-size:11px}.store-info small,.stock-row em{font-size:8px}}
 .hero-copy{display:none}.hero{display:block;min-height:245px;padding-top:22px}.hero-art{width:100%;display:block;overflow:hidden}.hero-art img{display:block;width:100%;max-width:100%;height:auto;max-height:215px;object-fit:contain;background:transparent;filter:none}.image-stamp{display:none}.bookmark-visual{overflow:hidden;height:190px}.bookmark-photo{display:block;width:300%;max-width:none;height:100%;object-fit:cover;object-position:left center;transform:none}.bookmark-visual .bookmark-card,.bookmark-visual .bookmark-orbit{display:none}
 @media(max-width:800px){.hero{min-height:180px;padding-top:15px}.hero-art img{height:145px;max-height:145px;object-fit:contain}.bookmark-visual{height:145px}.bookmark-photo{width:300%}}
+/* 지도 영역을 기존보다 두 배 크게 표시합니다. */
+.map-layout{height:840px}
+.map-layout #store-map{min-height:840px}
+@media(max-width:800px){.map-layout{height:auto}.map-layout #store-map{height:560px;min-height:560px}}
+@media(max-width:410px){.map-layout #store-map{height:440px;min-height:440px}}

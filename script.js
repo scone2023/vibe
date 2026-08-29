@@ -16,7 +16,7 @@ products.forEach((product, i) => {
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `${product.title} 상세 보기`);
-  card.innerHTML = `<div class="product-visual"><span class="product-index">0${i + 1}</span><img class="product-photo" src="${product.image}" alt="${product.title} ${product.type} ${product.flavor} 제품 사진" loading="lazy" /><div class="photo-credit">GS25 / MINUMSA</div></div><div><div class="product-type">${product.type} / ${product.flavor}</div><h3>${product.title}</h3><div class="product-flavor">추천 음료 · ${product.drink}</div></div><div class="product-price">${product.price}</div>`;
+  card.innerHTML = `<div class="product-visual"><span class="product-index">0${i + 1}</span><img class="product-photo" src="${product.image}" alt="${product.title} ${product.type} ${product.flavor} 제품 사진" loading="lazy" /><div class="photo-credit">지에스25 · 민음사</div></div><div><div class="product-type">${product.type} / ${product.flavor}</div><h3>${product.title}</h3><div class="product-flavor">추천 음료 · ${product.drink}</div></div><div class="product-price">${product.price}</div>`;
   const select = () => { document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active')); card.classList.add('active'); quote.textContent = `“${product.quote}”`; meta.textContent = `${product.title} · ${product.type} ${product.flavor} · ${product.price} · ${product.drink}와 함께`; panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); };
   card.addEventListener('click', select);
   card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
@@ -26,10 +26,10 @@ products.forEach((product, i) => {
 document.querySelector('#close-detail').addEventListener('click', () => { document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active')); quote.textContent = '제품 카드를 선택하면 오늘의 문장이 나타납니다.'; meta.textContent = ''; });
 
 const stores = [
-  { name: 'GS25 문학로점', address: '서울 종로구 문학로 25', lat: 37.581, lon: 126.982, stock: [2, 0, 1, 3] },
-  { name: 'GS25 북촌마루점', address: '서울 종로구 북촌로 18', lat: 37.5828, lon: 126.985, stock: [0, 1, 0, 2] },
-  { name: 'GS25 서촌책방점', address: '서울 종로구 자하문로 41', lat: 37.578, lon: 126.968, stock: [1, 2, 0, 0] },
-  { name: 'GS25 청계문고점', address: '서울 종로구 청계천로 77', lat: 37.569, lon: 126.979, stock: [3, 1, 2, 1] }
+  { name: '지에스25 문학로점', address: '서울 종로구 문학로 25', lat: 37.581, lon: 126.982, stock: [2, 0, 1, 3] },
+  { name: '지에스25 북촌마루점', address: '서울 종로구 북촌로 18', lat: 37.5828, lon: 126.985, stock: [0, 1, 0, 2] },
+  { name: '지에스25 서촌책방점', address: '서울 종로구 자하문로 41', lat: 37.578, lon: 126.968, stock: [1, 2, 0, 0] },
+  { name: '지에스25 청계문고점', address: '서울 종로구 청계천로 77', lat: 37.569, lon: 126.979, stock: [3, 1, 2, 1] }
 ];
 const mapEl = document.querySelector('#store-map');
 const storeList = document.querySelector('#store-list');
@@ -39,7 +39,7 @@ function stockLabel(count) { return count ? `재고 ${count}개` : '품절'; }
 function renderStores(keyword = '') { const filtered = stores.filter(s => (s.name + s.address).includes(keyword)); document.querySelector('#store-count').textContent = `주변 매장 ${filtered.length}곳`; storeList.innerHTML = filtered.map((s, i) => `<button class="store-item" data-index="${stores.indexOf(s)}"><span class="store-pin">${i + 1}</span><span class="store-info"><strong>${s.name}</strong><small>${s.address}</small><span class="stock-row">${s.stock.map((n, j) => `<em class="${n ? 'in-stock' : 'sold-out'}">${productShort[j]} · ${stockLabel(n)}</em>`).join('')}</span></span><span class="store-arrow">→</span></button>`).join('') || '<p class="empty-stores">검색 결과가 없습니다.</p>'; document.querySelectorAll('.store-item').forEach(item => item.addEventListener('click', () => { const s = stores[Number(item.dataset.index)]; map?.setView([s.lat, s.lon], 16); markers[Number(item.dataset.index)]?.openPopup(); })); }
 let map;
 const markers = [];
-if (window.L && mapEl) { map = L.map(mapEl, { zoomControl: false }).setView([37.576, 126.979], 14); L.control.zoom({ position: 'bottomright' }).addTo(map); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map); stores.forEach((s, i) => markers.push(L.marker([s.lat, s.lon], { icon: L.divIcon({ className: 'custom-pin', html: `<span>${i + 1}</span>`, iconSize: [30, 30], iconAnchor: [15, 30] }) }).addTo(map).bindPopup(`<strong>${s.name}</strong><br /><small>${s.address}</small><br /><b>문학빵 ${s.stock.reduce((a, b) => a + b, 0)}개</b>`))); }
+if (window.L && mapEl) { map = L.map(mapEl, { zoomControl: false }).setView([37.576, 126.979], 14); L.control.zoom({ position: 'bottomright' }).addTo(map); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© 오픈스트리트맵 제공' }).addTo(map); stores.forEach((s, i) => markers.push(L.marker([s.lat, s.lon], { icon: L.divIcon({ className: 'custom-pin', html: `<span>${i + 1}</span>`, iconSize: [30, 30], iconAnchor: [15, 30] }) }).addTo(map).bindPopup(`<strong>${s.name}</strong><br /><small>${s.address}</small><br /><b>문학빵 ${s.stock.reduce((a, b) => a + b, 0)}개</b>`))); }
 renderStores();
 searchInput?.addEventListener('input', e => renderStores(e.target.value.trim()));
 document.querySelector('#locate-me')?.addEventListener('click', () => { if (!navigator.geolocation) { alert('이 브라우저에서는 위치 기능을 사용할 수 없습니다.'); return; } navigator.geolocation.getCurrentPosition(pos => map?.setView([pos.coords.latitude, pos.coords.longitude], 14), () => alert('현재 위치를 확인할 수 없습니다. 브라우저 위치 권한을 허용해 주세요.')); });
